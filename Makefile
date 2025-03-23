@@ -16,8 +16,10 @@ libspikedevices.so: $(SRCS)
 	    -I $(RISCV)/include -I $(SPIKE_DIR) -fPIC $^
 
 .PHONY: install
+# usage: sudo env RISCV=$RISCV make install
 install: libspikedevices.so
 	cp libspikedevices.so $(RISCV)/lib
+	sudo cp /opt/riscv/lib/libspikedevices.so /usr/lib/
 
 clean:
 	rm -rf *.o *.so
